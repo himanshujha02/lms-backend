@@ -9,13 +9,14 @@ const { apiV1 } = require("./routes")
 const { connectDb } = require("./db")
 const { UserModel } = require("./models/user")
 const PORT=process.env.PORT || 8080
-
+const cors = require('cors');
 const app = express()
 
 app.use(morgan("dev"))
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
+app.use(cors());
 
 app.use(
   sessions({
