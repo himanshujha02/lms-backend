@@ -8,6 +8,7 @@ const sessions = require("express-session")
 const { apiV1 } = require("./routes")
 const { connectDb } = require("./db")
 const { UserModel } = require("./models/user")
+const PORT=process.env.PORT || 8080
 
 const app = express()
 
@@ -48,7 +49,7 @@ connectDb()
     }
   })
   .then(() => {
-    app.listen(8080, () => console.log("Server is listening on http://localhost:8080"))
+    app.listen(PORT, () => console.log("Server is listening on http://localhost:8080"))
   })
   .catch((err) => {
     console.error("Failed to connect to database", err)
